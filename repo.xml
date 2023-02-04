@@ -1,306 +1,334 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="bffe1e76-698d-40a4-912b-b9a6a0e5ce93" Name="Chakra overcap counter (README inside)" Enabled="true">
+  <ExportedFolder Id="194e2320-a6c3-4214-aaf4-a13fb3c09e5f" Name="hintxivtriggers" Enabled="true">
     <Folders>
-      <Folder Id="d5bebc32-55ee-4115-aba8-2fe89b0288a9" Name="Backend" Enabled="true">
-        <Folders />
-        <Triggers>
-          <Trigger Enabled="true" Name="Reset" Id="e7f1eb02-041e-4026-91f6-c62750be731f" RegularExpression="\A.{15}(21.{10}4.{5}(03|10)|01)">
-            <Actions>
-              <Action OrderNumber="1" VariableName="chakraOvercap" ActionType="Variable">
+      <Folder Id="36fd7202-8207-4563-8709-087e9b84e449" Name="Chakra overcap counter (README inside)" Enabled="true">
+        <Folders>
+          <Folder Id="d5526016-192d-42e9-af97-054a8653aa61" Name="Backend" Enabled="true">
+            <Folders />
+            <Triggers>
+              <Trigger Enabled="true" Name="Reset" Id="d1550505-6f61-4464-b8dc-5c25adf5821e" RegularExpression="\A.{15}(21.{10}4.{5}(03|10)|01)">
+                <Actions>
+                  <Action OrderNumber="1" VariableName="chakraOvercap" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
                 <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="Capture Beast Chakra" Id="0a1308c2-416a-4b8a-94d1-d08bbc420572" RegularExpression="(?&lt;timestamp&gt;^.{14}) (?:ActionEffect|AOEActionEffect) (?&lt;type&gt;(?:15|16)):(?&lt;sourceId&gt;[^:]*):(?&lt;source&gt;[^:]*):(?&lt;id&gt;[^:]*):(?&lt;ability&gt;(?:[^:]|: )*?):(?&lt;targetId&gt;[^:]*):(?&lt;target&gt;[^:]*):(?&lt;flags&gt;[^:]*):(?&lt;damage&gt;[^:]*)(?::[^:]*){14}:(?&lt;targetCurrentHp&gt;[^:]*):(?&lt;targetMaxHp&gt;[^:]*):(?&lt;targetCurrentMp&gt;[^:]*):(?&lt;targetMaxMp&gt;[^:]*)(?::[^:]*){2}:(?&lt;targetX&gt;[^:]*):(?&lt;targetY&gt;[^:]*):(?&lt;targetZ&gt;[^:]*):(?&lt;targetHeading&gt;[^:]*):(?&lt;currentHp&gt;[^:]*):(?&lt;maxHp&gt;[^:]*):(?&lt;currentMp&gt;[^:]*):(?&lt;maxMp&gt;[^:]*)(?::[^:]*){2}:(?&lt;x&gt;[^:]*):(?&lt;y&gt;[^:]*):(?&lt;z&gt;[^:]*):(?&lt;heading&gt;[^:]*):(?&lt;sequence&gt;[^:]*):(?&lt;targetIndex&gt;[^:]*):(?&lt;targetCount&gt;[^:]*)(?:$|:)">
-            <Actions>
-              <Action OrderNumber="1" VariableOp="SetString" VariableName="beastchakra" VariableExpression="none" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="2" VariableOp="SetString" VariableName="beastchakra" VariableExpression="updated" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="true" Grouping="And">
-                  <ConditionGroup Enabled="true" Grouping="Or">
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3545" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25768" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25769" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3543" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25765" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25882" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                  </ConditionGroup>
-                </Condition>
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="Capture Gauge" Id="e69ae5e9-8bbf-4084-91ef-cd83f9fd5e27" RegularExpression="(?&lt;timestamp&gt;^.{14}) Gauge (?&lt;type&gt;1F):(?&lt;id&gt;[^:]*):(?&lt;data0&gt;[^:]*):(?&lt;data1&gt;[^:]*):(?&lt;data2&gt;[^:]*):(?&lt;data3&gt;[^:]*)(?:$|:)">
-            <Actions>
-              <Action OrderNumber="1" VariableOp="SetString" VariableName="prevchakradata" VariableExpression="${var:chakradata}" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="2" VariableOp="SetString" VariableName="chakradata" VariableExpression="${data0}" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${data0}" ExpressionTypeL="String" ExpressionR=".*514" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="3" PlaySoundFileExpression="https://github.com/hintxiv/hintxivtriggers/blob/master/overcap.mp3?raw=true" UseTTSTextExpression="Overcap" ActionType="PlaySound" Asynchronous="False">
-                <Condition Enabled="true" Grouping="And">
-                  <ConditionGroup Enabled="true" Grouping="Or">
-                    <ConditionSingle Enabled="true" ExpressionL="${var:weaponskill}" ExpressionTypeL="String" ExpressionR="crit" ExpressionTypeR="String" ConditionType="StringEqualCase" />
-                    <ConditionGroup Enabled="true" Grouping="And">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:pb}" ExpressionTypeL="String" ExpressionR="true" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
-                      <ConditionSingle Enabled="true" ExpressionL="${var:beastchakra}" ExpressionTypeL="String" ExpressionR="updated" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
-                    </ConditionGroup>
-                  </ConditionGroup>
-                  <ConditionSingle Enabled="true" ExpressionL="${var:chakradata}" ExpressionTypeL="String" ExpressionR=".*514" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                  <ConditionSingle Enabled="true" ExpressionL="${var:prevchakradata}" ExpressionTypeL="String" ExpressionR=".*514" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                  <ConditionSingle Enabled="true" ExpressionL="${var:gong}" ExpressionTypeL="String" ExpressionR="on" ExpressionTypeR="String" ConditionType="StringEqualCase" />
-                </Condition>
-              </Action>
-              <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="chakraOvercap" VariableExpression="${var:chakraOvercap}+1" ActionType="Variable">
-                <Condition Enabled="true" Grouping="And">
-                  <ConditionGroup Enabled="true" Grouping="And">
-                    <ConditionGroup Enabled="true" Grouping="Or">
-                      <ConditionSingle Enabled="true" ExpressionL="${var:weaponskill}" ExpressionTypeL="String" ExpressionR="crit" ExpressionTypeR="String" ConditionType="StringEqualCase" />
-                      <ConditionGroup Enabled="true" Grouping="And">
-                        <ConditionSingle Enabled="true" ExpressionL="${var:pb}" ExpressionTypeL="String" ExpressionR="true" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
-                        <ConditionSingle Enabled="true" ExpressionL="${var:beastchakra}" ExpressionTypeL="String" ExpressionR="updated" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
+              </Trigger>
+              <Trigger Enabled="true" Name="Capture Beast Chakra" Id="46e401b2-db09-4509-abe9-200fa8a08ae4" RegularExpression="(?&lt;timestamp&gt;^.{14}) (?:ActionEffect|AOEActionEffect) (?&lt;type&gt;(?:15|16)):(?&lt;sourceId&gt;[^:]*):(?&lt;source&gt;[^:]*):(?&lt;id&gt;[^:]*):(?&lt;ability&gt;(?:[^:]|: )*?):(?&lt;targetId&gt;[^:]*):(?&lt;target&gt;[^:]*):(?&lt;flags&gt;[^:]*):(?&lt;damage&gt;[^:]*)(?::[^:]*){14}:(?&lt;targetCurrentHp&gt;[^:]*):(?&lt;targetMaxHp&gt;[^:]*):(?&lt;targetCurrentMp&gt;[^:]*):(?&lt;targetMaxMp&gt;[^:]*)(?::[^:]*){2}:(?&lt;targetX&gt;[^:]*):(?&lt;targetY&gt;[^:]*):(?&lt;targetZ&gt;[^:]*):(?&lt;targetHeading&gt;[^:]*):(?&lt;currentHp&gt;[^:]*):(?&lt;maxHp&gt;[^:]*):(?&lt;currentMp&gt;[^:]*):(?&lt;maxMp&gt;[^:]*)(?::[^:]*){2}:(?&lt;x&gt;[^:]*):(?&lt;y&gt;[^:]*):(?&lt;z&gt;[^:]*):(?&lt;heading&gt;[^:]*):(?&lt;sequence&gt;[^:]*):(?&lt;targetIndex&gt;[^:]*):(?&lt;targetCount&gt;[^:]*)(?:$|:)">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="SetString" VariableName="beastchakra" VariableExpression="none" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" VariableOp="SetString" VariableName="beastchakra" VariableExpression="updated" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionGroup Enabled="true" Grouping="Or">
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3545" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25768" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25769" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3543" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25765" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25882" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                       </ConditionGroup>
-                    </ConditionGroup>
-                    <ConditionSingle Enabled="true" ExpressionL="${var:chakradata}" ExpressionTypeL="String" ExpressionR=".*514" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                    <ConditionSingle Enabled="true" ExpressionL="${var:prevchakradata}" ExpressionTypeL="String" ExpressionR=".*514" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                  </ConditionGroup>
+                    </Condition>
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+              <Trigger Enabled="true" Name="Capture Gauge" Id="da03f00b-b091-4b9c-87f5-678a8879b413" RegularExpression="(?&lt;timestamp&gt;^.{14}) Gauge (?&lt;type&gt;1F):(?&lt;id&gt;[^:]*):(?&lt;data0&gt;[^:]*):(?&lt;data1&gt;[^:]*):(?&lt;data2&gt;[^:]*):(?&lt;data3&gt;[^:]*)(?:$|:)">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="SetString" VariableName="prevchakradata" VariableExpression="${var:chakradata}" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="2" VariableOp="SetString" VariableName="chakradata" VariableExpression="${data0}" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${data0}" ExpressionTypeL="String" ExpressionR=".*514" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="3" PlaySoundFileExpression="https://github.com/hintxiv/hintxivtriggers/blob/master/overcap.mp3?raw=true" UseTTSTextExpression="Overcap" ActionType="PlaySound" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionGroup Enabled="true" Grouping="Or">
+                        <ConditionSingle Enabled="true" ExpressionL="${var:weaponskill}" ExpressionTypeL="String" ExpressionR="crit" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                        <ConditionGroup Enabled="true" Grouping="And">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:pb}" ExpressionTypeL="String" ExpressionR="true" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
+                          <ConditionSingle Enabled="true" ExpressionL="${var:beastchakra}" ExpressionTypeL="String" ExpressionR="updated" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
+                        </ConditionGroup>
+                      </ConditionGroup>
+                      <ConditionSingle Enabled="true" ExpressionL="${var:chakradata}" ExpressionTypeL="String" ExpressionR=".*514" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:prevchakradata}" ExpressionTypeL="String" ExpressionR=".*514" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:gong}" ExpressionTypeL="String" ExpressionR="on" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="chakraOvercap" VariableExpression="${var:chakraOvercap}+1" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionGroup Enabled="true" Grouping="And">
+                        <ConditionGroup Enabled="true" Grouping="Or">
+                          <ConditionSingle Enabled="true" ExpressionL="${var:weaponskill}" ExpressionTypeL="String" ExpressionR="crit" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                          <ConditionGroup Enabled="true" Grouping="And">
+                            <ConditionSingle Enabled="true" ExpressionL="${var:pb}" ExpressionTypeL="String" ExpressionR="true" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
+                            <ConditionSingle Enabled="true" ExpressionL="${var:beastchakra}" ExpressionTypeL="String" ExpressionR="updated" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
+                          </ConditionGroup>
+                        </ConditionGroup>
+                        <ConditionSingle Enabled="true" ExpressionL="${var:chakradata}" ExpressionTypeL="String" ExpressionR=".*514" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                        <ConditionSingle Enabled="true" ExpressionL="${var:prevchakradata}" ExpressionTypeL="String" ExpressionR=".*514" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                      </ConditionGroup>
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="5" AuraName="yoshidaChakra" AuraImage="https://i.imgur.com/tu4FAXC.png" AuraXIniExpression="200" AuraYIniExpression="200" AuraWIniExpression="250" AuraHIniExpression="204" AuraOIniExpression="100" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#666666" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" ExecutionDelayExpression="100">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="25" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="6" AuraName="yoshidaChakra" AuraImage="https://i.imgur.com/tu4FAXC.png" AuraXIniExpression="200" AuraYIniExpression="200" AuraWIniExpression="250" AuraHIniExpression="204" AuraOIniExpression="100" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#1EFF00" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="25" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="50" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="7" AuraName="yoshidaChakra" AuraImage="https://i.imgur.com/tu4FAXC.png" AuraXIniExpression="200" AuraYIniExpression="200" AuraWIniExpression="250" AuraHIniExpression="204" AuraOIniExpression="100" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#0070FF" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="50" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="75" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="8" AuraName="yoshidaChakra" AuraImage="https://i.imgur.com/tu4FAXC.png" AuraXIniExpression="200" AuraYIniExpression="200" AuraWIniExpression="250" AuraHIniExpression="204" AuraOIniExpression="100" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#A335EE" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="75" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="95" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="9" AuraName="yoshidaChakra" AuraImage="https://i.imgur.com/tu4FAXC.png" AuraXIniExpression="200" AuraYIniExpression="200" AuraWIniExpression="250" AuraHIniExpression="204" AuraOIniExpression="100" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#FF8000" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="95" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="99" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="10" AuraName="yoshidaChakra" AuraImage="https://i.imgur.com/tu4FAXC.png" AuraXIniExpression="200" AuraYIniExpression="200" AuraWIniExpression="250" AuraHIniExpression="204" AuraOIniExpression="100" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#E25C91" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="99" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="11" AuraName="yoshidaChakra" AuraImage="https://i.imgur.com/tu4FAXC.png" AuraXIniExpression="200" AuraYIniExpression="200" AuraWIniExpression="250" AuraHIniExpression="204" AuraOIniExpression="100" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#E5CC80" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="12" VariableOp="SetString" VariableName="pb" VariableExpression="false" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="13" VariableOp="SetString" VariableName="beastchakra" VariableExpression="false" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                  <Action OrderNumber="14" VariableOp="SetString" VariableName="weaponskill" VariableExpression="false" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+              <Trigger Enabled="true" Name="Capture PB Apply" Id="ba90acd5-0cb6-44c8-9bdf-7828bed4f861" RegularExpression="(?&lt;timestamp&gt;^.{14}) StatusAdd (?&lt;type&gt;1A):(?&lt;effectId&gt;[^:]*):Perfect Balance:(?&lt;duration&gt;[^:]*):(?&lt;sourceId&gt;[^:]*):(?&lt;source&gt;[^:]*):(?&lt;targetId&gt;[^:]*):(?&lt;target&gt;[^:]*):(?&lt;count&gt;[^:]*):(?&lt;targetMaxHp&gt;[^:]*):(?&lt;sourceMaxHp&gt;[^:]*)(?:$|:)">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="SetString" VariableName="pb" VariableExpression="true" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${count}" ExpressionTypeL="String" ExpressionR="03" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="2" VariableOp="SetString" VariableName="weaponskill" VariableExpression="none" ActionType="Variable">
+                    <Condition Enabled="true" Grouping="Or">
+                      <ConditionSingle Enabled="true" ExpressionL="${count}" ExpressionTypeL="String" ExpressionR="03" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                    </Condition>
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+              <Trigger Enabled="true" Name="Capture PB Fade" Id="2abcf2d1-d5c7-46d8-8c9b-84c1c12881a6" RegularExpression="(?&lt;timestamp&gt;^.{14}) StatusRemove (?&lt;type&gt;1E):(?&lt;effectId&gt;[^:]*):Perfect Balance:[^:]*:(?&lt;sourceId&gt;[^:]*):(?&lt;source&gt;[^:]*):(?&lt;targetId&gt;[^:]*):(?&lt;target&gt;[^:]*):(?&lt;count&gt;[^:]*)(?:$|:)">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="SetString" VariableName="pb" VariableExpression="true" ActionType="Variable">
+                    <Condition Enabled="false" Grouping="Or" />
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="Or" />
+              </Trigger>
+              <Trigger Enabled="true" Name="Weaponskill Crit" Id="b4f55976-3596-41d2-9980-c8c18b0e9729" RegularExpression="(?&lt;timestamp&gt;^.{14}) (?:ActionEffect|AOEActionEffect) (?&lt;type&gt;(?:15|16)):(?&lt;sourceId&gt;[^:]*):(?&lt;source&gt;[^:]*):(?&lt;id&gt;[^:]*):(?&lt;ability&gt;(?:[^:]|: )*?):(?&lt;targetId&gt;[^:]*):(?&lt;target&gt;[^:]*):(?&lt;flags&gt;[^:]*):(?&lt;damage&gt;[^:]*)(?::[^:]*){14}:(?&lt;targetCurrentHp&gt;[^:]*):(?&lt;targetMaxHp&gt;[^:]*):(?&lt;targetCurrentMp&gt;[^:]*):(?&lt;targetMaxMp&gt;[^:]*)(?::[^:]*){2}:(?&lt;targetX&gt;[^:]*):(?&lt;targetY&gt;[^:]*):(?&lt;targetZ&gt;[^:]*):(?&lt;targetHeading&gt;[^:]*):(?&lt;currentHp&gt;[^:]*):(?&lt;maxHp&gt;[^:]*):(?&lt;currentMp&gt;[^:]*):(?&lt;maxMp&gt;[^:]*)(?::[^:]*){2}:(?&lt;x&gt;[^:]*):(?&lt;y&gt;[^:]*):(?&lt;z&gt;[^:]*):(?&lt;heading&gt;[^:]*):(?&lt;sequence&gt;[^:]*):(?&lt;targetIndex&gt;[^:]*):(?&lt;targetCount&gt;[^:]*)(?:$|:)">
+                <Actions>
+                  <Action OrderNumber="1" VariableOp="SetString" VariableName="weaponskill" VariableExpression="none" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionGroup Enabled="true" Grouping="Or">
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="16476" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="56" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="54" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="61" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="62" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="66" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="70" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="74" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="16473" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3545" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25768" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25769" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25767" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3543" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="53" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25765" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25882" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      </ConditionGroup>
+                    </Condition>
+                  </Action>
+                  <Action OrderNumber="2" VariableOp="SetString" VariableName="weaponskill" VariableExpression="crit" ActionType="Variable" Asynchronous="False">
+                    <Condition Enabled="true" Grouping="And">
+                      <ConditionGroup Enabled="true" Grouping="Or">
+                        <ConditionSingle Enabled="true" ExpressionL="mod(floor(${flags} / 1000), 10)" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="mod(floor(${flags} / 1000), 10)" ExpressionTypeL="Numeric" ExpressionR="6" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      </ConditionGroup>
+                      <ConditionGroup Enabled="true" Grouping="Or">
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="16476" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="56" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="54" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="61" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="62" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="66" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="70" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="74" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="16473" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3545" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25768" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25769" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25767" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3543" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="53" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25765" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                        <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25882" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                      </ConditionGroup>
+                    </Condition>
+                  </Action>
+                </Actions>
+                <Condition Enabled="false" Grouping="And" />
+              </Trigger>
+            </Triggers>
+          </Folder>
+        </Folders>
+        <Triggers>
+          <Trigger Enabled="true" Sequential="True" Name="!README in Description tab of this trigger" Id="c3dd6dce-a343-45e3-8a7f-85880c2c87f7" RegularExpression="!chakrashow" Description="Aya Liz made this. Not maintained, do not bother them if it doesn't work for you.&#xD;&#xA;&#xD;&#xA;After importing this trigger for the first time, restart ACT once or switch zones or jobs ingame to make sure the settings trigger fires.&#xD;&#xA;Do this on first use and any time you edit the chakraScaling variable in the Settings trigger.&#xD;&#xA;&#xD;&#xA;Ingame commands:&#xD;&#xA;/echo !chakrashow&#xD;&#xA;/echo !chakrahide&#xD;&#xA;/echo !chakragongon&#xD;&#xA;/echo !chakragongoff&#xD;&#xA;&#xD;&#xA;To move the location of the stuff displayed by this trigger, enter the &quot;Trigger actions&quot; tab of this trigger, open the action named&#xD;&#xA;&quot;Move me!&quot; and click &quot;Use visual guide for placement&quot;, Drag it whereever you want, save the changes and you're done.&#xD;&#xA;To see the change take effect, make sure to hide and then show the overlay again.&#xD;&#xA;&#xD;&#xA;This trigger displays the beautiful face of our lord and savior Yoshida alongside a counter of how much chakra you've lost to&#xD;&#xA;overcapping. Counter resets on raid wipes/clears and zone changes or you can manually reset it by using !chakrashow again.&#xD;&#xA;&#xD;&#xA;You can change the size of it by setting the value of the variable the Settings trigger sets to something else, but since I can't &#xD;&#xA;modify font sizes based on variables so you'll have to manually mess with font sizes if you wish to change the size. &#xD;&#xA;For the best experience, leave it as it is and bear with him staring into your soul.&#xD;&#xA;&#xD;&#xA;You may see the Backend folder turning itself on and off, that happens depending on whether you are currently showing the&#xD;&#xA;overlay.&#xD;&#xA;&#xD;&#xA;">
+            <Actions>
+              <Action OrderNumber="1" AuraImageMode="StretchImage" AuraName="yoshidaChakra" AuraImage="https://raw.githubusercontent.com/ayaliz/gaming/master/Icons/chakrabg.png" AuraXIniExpression="2062" AuraYIniExpression="416" AuraWIniExpression="270" AuraHIniExpression="320" AuraOIniExpression="100" ActionType="Aura" Description="Move me!" DescriptionOverride="True">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${_imageaura[yoshidaChakra].x}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
               </Action>
-              <Action OrderNumber="5" AuraName="yoshidaChakra" AuraImage="https://i.imgur.com/tu4FAXC.png" AuraXIniExpression="200" AuraYIniExpression="200" AuraWIniExpression="250" AuraHIniExpression="204" AuraOIniExpression="100" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#666666" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" ExecutionDelayExpression="100">
+              <Action OrderNumber="2" FolderId="d5526016-192d-42e9-af97-054a8653aa61" AuraName="yoshidaChakra" AuraImage="https://i.imgur.com/tu4FAXC.png" AuraXIniExpression="200" AuraYIniExpression="200" AuraWIniExpression="250" AuraHIniExpression="204" AuraOIniExpression="100" TextAuraAlignment="TopLeft" TextAuraForeground="#E5CC80" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraUseOutline="True" ActionType="Folder">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="chakraOvercap" VariableExpression="0" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="4" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#666666" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" ExecutionDelayExpression="100">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="25" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                 </Condition>
               </Action>
-              <Action OrderNumber="6" AuraName="yoshidaChakra" AuraImage="https://i.imgur.com/tu4FAXC.png" AuraXIniExpression="200" AuraYIniExpression="200" AuraWIniExpression="250" AuraHIniExpression="204" AuraOIniExpression="100" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#1EFF00" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+              <Action OrderNumber="5" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#1EFF00" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="25" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="50" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                 </Condition>
               </Action>
-              <Action OrderNumber="7" AuraName="yoshidaChakra" AuraImage="https://i.imgur.com/tu4FAXC.png" AuraXIniExpression="200" AuraYIniExpression="200" AuraWIniExpression="250" AuraHIniExpression="204" AuraOIniExpression="100" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#0070FF" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+              <Action OrderNumber="6" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#0070FF" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="50" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="75" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                 </Condition>
               </Action>
-              <Action OrderNumber="8" AuraName="yoshidaChakra" AuraImage="https://i.imgur.com/tu4FAXC.png" AuraXIniExpression="200" AuraYIniExpression="200" AuraWIniExpression="250" AuraHIniExpression="204" AuraOIniExpression="100" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#A335EE" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+              <Action OrderNumber="7" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#A335EE" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="75" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="95" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                 </Condition>
               </Action>
-              <Action OrderNumber="9" AuraName="yoshidaChakra" AuraImage="https://i.imgur.com/tu4FAXC.png" AuraXIniExpression="200" AuraYIniExpression="200" AuraWIniExpression="250" AuraHIniExpression="204" AuraOIniExpression="100" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#FF8000" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+              <Action OrderNumber="8" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#FF8000" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="95" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                   <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="99" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
                 </Condition>
               </Action>
-              <Action OrderNumber="10" AuraName="yoshidaChakra" AuraImage="https://i.imgur.com/tu4FAXC.png" AuraXIniExpression="200" AuraYIniExpression="200" AuraWIniExpression="250" AuraHIniExpression="204" AuraOIniExpression="100" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#E25C91" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+              <Action OrderNumber="9" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#E25C91" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="99" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
               </Action>
-              <Action OrderNumber="11" AuraName="yoshidaChakra" AuraImage="https://i.imgur.com/tu4FAXC.png" AuraXIniExpression="200" AuraYIniExpression="200" AuraWIniExpression="250" AuraHIniExpression="204" AuraOIniExpression="100" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#E5CC80" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+              <Action OrderNumber="10" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#E5CC80" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
                 <Condition Enabled="true" Grouping="Or">
                   <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
                 </Condition>
               </Action>
-              <Action OrderNumber="12" VariableOp="SetString" VariableName="pb" VariableExpression="false" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="13" VariableOp="SetString" VariableName="beastchakra" VariableExpression="false" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-              <Action OrderNumber="14" VariableOp="SetString" VariableName="weaponskill" VariableExpression="false" ActionType="Variable" Asynchronous="False">
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="Settings" Id="fd9a8fe9-2440-4b1e-8d51-5d9a049d9e4f" RegularExpression="!chakrashow">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="chakraScaling" VariableExpression="0.5" ActionType="Variable">
                 <Condition Enabled="false" Grouping="Or" />
               </Action>
             </Actions>
             <Condition Enabled="false" Grouping="Or" />
           </Trigger>
-          <Trigger Enabled="true" Name="Capture PB Apply" Id="5b1e5cdf-aace-4185-b078-a039bfc88fa8" RegularExpression="(?&lt;timestamp&gt;^.{14}) StatusAdd (?&lt;type&gt;1A):(?&lt;effectId&gt;[^:]*):Perfect Balance:(?&lt;duration&gt;[^:]*):(?&lt;sourceId&gt;[^:]*):(?&lt;source&gt;[^:]*):(?&lt;targetId&gt;[^:]*):(?&lt;target&gt;[^:]*):(?&lt;count&gt;[^:]*):(?&lt;targetMaxHp&gt;[^:]*):(?&lt;sourceMaxHp&gt;[^:]*)(?:$|:)">
+          <Trigger Enabled="true" Name="Hide" Id="62f5025f-df52-4991-a7d5-63b3a1ad1951" RegularExpression="!chakrahide">
             <Actions>
-              <Action OrderNumber="1" VariableOp="SetString" VariableName="pb" VariableExpression="true" ActionType="Variable">
-                <Condition Enabled="false" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${count}" ExpressionTypeL="String" ExpressionR="03" ExpressionTypeR="String" ConditionType="StringEqualCase" />
-                </Condition>
+              <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="yoshidaChakra" ActionType="Aura">
+                <Condition Enabled="false" Grouping="Or" />
               </Action>
-              <Action OrderNumber="2" VariableOp="SetString" VariableName="weaponskill" VariableExpression="none" ActionType="Variable">
+              <Action OrderNumber="2" AuraOp="DeactivateAura" AuraName="yoshidaChakra" TextAuraOp="DeactivateAura" TextAuraFontSize="8.25" TextAuraName="chakraOvercap" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="3" VariableName="chakraOvercap" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="4" FolderOp="DisableFolder" FolderId="d5526016-192d-42e9-af97-054a8653aa61" ActionType="Folder">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="Disable Gong" Id="00fd976f-3d1b-4f2b-9c48-fe2eebc8b0f4" RegularExpression="!chakragongoff">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetString" VariableName="gong" VariableExpression="off" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="Enable Gong" Id="76cae23c-63c7-4822-80c4-ace31cc24314" RegularExpression="!chakragongon">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetString" VariableName="gong" VariableExpression="on" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder Id="fa94d70f-ae4b-4871-b21b-b5ccd8102fce" Name="Positionals (README inside)" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Source="FFXIVNetwork" Name="!README in Description tab of this trigger" Id="0bd1d779-a300-41cb-b638-5e08cb593895" RegularExpression="^21\|[^|]*\|[^|]*\|(?&lt;player&gt;[^|]*)\|(?&lt;id&gt;[^|]*)\|[^|]+\|[^|]+\|[^|]+\|(7|3[9ADF]|4[36])" Description="To add a new positional:&#xD;&#xA;- Find the action's id (https://arcanedisgea.com/xiv/xiv-id/)&#xD;&#xA;- Copy paste any of the existing actions in the &quot;Trigger actions&quot; tab&#xD;&#xA;- Double click the new Trigger action&#xD;&#xA;- Go into the &quot;Action Conditions&quot; tab&#xD;&#xA;- Click on the first condition, find the &quot;Right Expression&quot; textbox, and paste your action ID there&#xD;&#xA;">
+            <Actions>
+              <Action OrderNumber="1" UseTTSTextExpression="missed snap punch" ActionType="UseTTS">
                 <Condition Enabled="true" Grouping="Or">
-                  <ConditionSingle Enabled="true" ExpressionL="${count}" ExpressionTypeL="String" ExpressionR="03" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                  <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="56" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="2" UseTTSTextExpression="missed demolish" ActionType="UseTTS">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="66" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
                 </Condition>
               </Action>
             </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="Capture PB Fade" Id="9b90c6ab-e4f8-4e04-8184-92a31b291c50" RegularExpression="(?&lt;timestamp&gt;^.{14}) StatusRemove (?&lt;type&gt;1E):(?&lt;effectId&gt;[^:]*):Perfect Balance:[^:]*:(?&lt;sourceId&gt;[^:]*):(?&lt;source&gt;[^:]*):(?&lt;targetId&gt;[^:]*):(?&lt;target&gt;[^:]*):(?&lt;count&gt;[^:]*)(?:$|:)">
-            <Actions>
-              <Action OrderNumber="1" VariableOp="SetString" VariableName="pb" VariableExpression="true" ActionType="Variable">
-                <Condition Enabled="false" Grouping="Or" />
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="Or" />
-          </Trigger>
-          <Trigger Enabled="true" Name="Weaponskill Crit" Id="2554d82e-f7e8-4925-9119-6c63d066087f" RegularExpression="(?&lt;timestamp&gt;^.{14}) (?:ActionEffect|AOEActionEffect) (?&lt;type&gt;(?:15|16)):(?&lt;sourceId&gt;[^:]*):(?&lt;source&gt;[^:]*):(?&lt;id&gt;[^:]*):(?&lt;ability&gt;(?:[^:]|: )*?):(?&lt;targetId&gt;[^:]*):(?&lt;target&gt;[^:]*):(?&lt;flags&gt;[^:]*):(?&lt;damage&gt;[^:]*)(?::[^:]*){14}:(?&lt;targetCurrentHp&gt;[^:]*):(?&lt;targetMaxHp&gt;[^:]*):(?&lt;targetCurrentMp&gt;[^:]*):(?&lt;targetMaxMp&gt;[^:]*)(?::[^:]*){2}:(?&lt;targetX&gt;[^:]*):(?&lt;targetY&gt;[^:]*):(?&lt;targetZ&gt;[^:]*):(?&lt;targetHeading&gt;[^:]*):(?&lt;currentHp&gt;[^:]*):(?&lt;maxHp&gt;[^:]*):(?&lt;currentMp&gt;[^:]*):(?&lt;maxMp&gt;[^:]*)(?::[^:]*){2}:(?&lt;x&gt;[^:]*):(?&lt;y&gt;[^:]*):(?&lt;z&gt;[^:]*):(?&lt;heading&gt;[^:]*):(?&lt;sequence&gt;[^:]*):(?&lt;targetIndex&gt;[^:]*):(?&lt;targetCount&gt;[^:]*)(?:$|:)">
-            <Actions>
-              <Action OrderNumber="1" VariableOp="SetString" VariableName="weaponskill" VariableExpression="none" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="true" Grouping="And">
-                  <ConditionGroup Enabled="true" Grouping="Or">
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="16476" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="56" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="54" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="61" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="62" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="66" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="70" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="74" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="16473" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3545" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25768" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25769" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25767" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3543" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="53" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25765" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25882" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                  </ConditionGroup>
-                </Condition>
-              </Action>
-              <Action OrderNumber="2" VariableOp="SetString" VariableName="weaponskill" VariableExpression="crit" ActionType="Variable" Asynchronous="False">
-                <Condition Enabled="true" Grouping="And">
-                  <ConditionGroup Enabled="true" Grouping="Or">
-                    <ConditionSingle Enabled="true" ExpressionL="mod(floor(${flags} / 1000), 10)" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="mod(floor(${flags} / 1000), 10)" ExpressionTypeL="Numeric" ExpressionR="6" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                  </ConditionGroup>
-                  <ConditionGroup Enabled="true" Grouping="Or">
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="16476" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="56" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="54" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="61" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="62" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="66" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="70" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="74" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="16473" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3545" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25768" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25769" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25767" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3543" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="53" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25765" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25882" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                  </ConditionGroup>
-                </Condition>
-              </Action>
-            </Actions>
-            <Condition Enabled="false" Grouping="And" />
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${player}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+            <Conditions />
           </Trigger>
         </Triggers>
       </Folder>
     </Folders>
-    <Triggers>
-      <Trigger Enabled="true" Sequential="True" Name="!README in Description tab of this trigger" Id="23ad64c7-2d93-45ba-b198-6224539e459a" RegularExpression="!chakrashow" Description="Aya Liz made this. Not maintained, do not bother them if it doesn't work for you.&#xD;&#xA;&#xD;&#xA;After importing this trigger for the first time, restart ACT once or switch zones or jobs ingame to make sure the settings trigger fires.&#xD;&#xA;Do this on first use and any time you edit the chakraScaling variable in the Settings trigger.&#xD;&#xA;&#xD;&#xA;Ingame commands:&#xD;&#xA;/echo !chakrashow&#xD;&#xA;/echo !chakrahide&#xD;&#xA;/echo !chakragongon&#xD;&#xA;/echo !chakragongoff&#xD;&#xA;&#xD;&#xA;To move the location of the stuff displayed by this trigger, enter the &quot;Trigger actions&quot; tab of this trigger, open the action named&#xD;&#xA;&quot;Move me!&quot; and click &quot;Use visual guide for placement&quot;, Drag it whereever you want, save the changes and you're done.&#xD;&#xA;To see the change take effect, make sure to hide and then show the overlay again.&#xD;&#xA;&#xD;&#xA;This trigger displays the beautiful face of our lord and savior Yoshida alongside a counter of how much chakra you've lost to&#xD;&#xA;overcapping. Counter resets on raid wipes/clears and zone changes or you can manually reset it by using !chakrashow again.&#xD;&#xA;&#xD;&#xA;You can change the size of it by setting the value of the variable the Settings trigger sets to something else, but since I can't &#xD;&#xA;modify font sizes based on variables so you'll have to manually mess with font sizes if you wish to change the size. &#xD;&#xA;For the best experience, leave it as it is and bear with him staring into your soul.&#xD;&#xA;&#xD;&#xA;You may see the Backend folder turning itself on and off, that happens depending on whether you are currently showing the&#xD;&#xA;overlay.&#xD;&#xA;&#xD;&#xA;">
-        <Actions>
-          <Action OrderNumber="1" AuraImageMode="StretchImage" AuraName="yoshidaChakra" AuraImage="https://raw.githubusercontent.com/ayaliz/gaming/master/Icons/chakrabg.png" AuraXIniExpression="2062" AuraYIniExpression="416" AuraWIniExpression="270" AuraHIniExpression="320" AuraOIniExpression="100" ActionType="Aura" Description="Move me!" DescriptionOverride="True">
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${_imageaura[yoshidaChakra].x}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-            </Condition>
-          </Action>
-          <Action OrderNumber="2" FolderId="d5bebc32-55ee-4115-aba8-2fe89b0288a9" AuraName="yoshidaChakra" AuraImage="https://i.imgur.com/tu4FAXC.png" AuraXIniExpression="200" AuraYIniExpression="200" AuraWIniExpression="250" AuraHIniExpression="204" AuraOIniExpression="100" TextAuraAlignment="TopLeft" TextAuraForeground="#E5CC80" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraUseOutline="True" ActionType="Folder">
-            <Condition Enabled="false" Grouping="Or" />
-          </Action>
-          <Action OrderNumber="3" VariableOp="SetNumeric" VariableName="chakraOvercap" VariableExpression="0" ActionType="Variable">
-            <Condition Enabled="false" Grouping="Or" />
-          </Action>
-          <Action OrderNumber="4" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#666666" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura" ExecutionDelayExpression="100">
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="25" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
-            </Condition>
-          </Action>
-          <Action OrderNumber="5" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#1EFF00" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
-            <Condition Enabled="true" Grouping="And">
-              <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="25" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
-              <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="50" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
-            </Condition>
-          </Action>
-          <Action OrderNumber="6" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#0070FF" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
-            <Condition Enabled="true" Grouping="And">
-              <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="50" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
-              <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="75" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
-            </Condition>
-          </Action>
-          <Action OrderNumber="7" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#A335EE" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
-            <Condition Enabled="true" Grouping="And">
-              <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="75" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
-              <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="95" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
-            </Condition>
-          </Action>
-          <Action OrderNumber="8" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#FF8000" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
-            <Condition Enabled="true" Grouping="And">
-              <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="95" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
-              <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="99" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
-            </Condition>
-          </Action>
-          <Action OrderNumber="9" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#E25C91" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="99" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-            </Condition>
-          </Action>
-          <Action OrderNumber="10" TextAuraAlignment="TopLeft" TextAuraFontSize="18" TextAuraForeground="#E5CC80" TextAuraOutline="Black" TextAuraName="chakraOvercap" TextAuraExpression="${var:chakraOvercap}" TextAuraXIniExpression="${_imageaura[yoshidaChakra].x}+358*${var:chakraScaling}" TextAuraYIniExpression="${_imageaura[yoshidaChakra].y}+572*${var:chakraScaling}" TextAuraWIniExpression="100" TextAuraHIniExpression="100" TextAuraOIniExpression="100" TextAuraUseOutline="True" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${var:chakraOvercap}" ExpressionTypeL="Numeric" ExpressionR="100" ExpressionTypeR="Numeric" ConditionType="NumericGreaterEqual" />
-            </Condition>
-          </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="Or" />
-      </Trigger>
-      <Trigger Enabled="true" Name="Settings" Id="66ca8b8c-bf64-463b-8529-0f0dae282ba4" RegularExpression="!chakrashow">
-        <Actions>
-          <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="chakraScaling" VariableExpression="0.5" ActionType="Variable">
-            <Condition Enabled="false" Grouping="Or" />
-          </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="Or" />
-      </Trigger>
-      <Trigger Enabled="true" Name="Hide" Id="c0019ea6-9143-427b-87fb-961f56cc78eb" RegularExpression="!chakrahide">
-        <Actions>
-          <Action OrderNumber="1" AuraOp="DeactivateAura" AuraName="yoshidaChakra" ActionType="Aura">
-            <Condition Enabled="false" Grouping="Or" />
-          </Action>
-          <Action OrderNumber="2" AuraOp="DeactivateAura" AuraName="yoshidaChakra" TextAuraOp="DeactivateAura" TextAuraFontSize="8.25" TextAuraName="chakraOvercap" TextAuraFontName="Microsoft Sans Serif" ActionType="TextAura">
-            <Condition Enabled="false" Grouping="Or" />
-          </Action>
-          <Action OrderNumber="3" VariableName="chakraOvercap" ActionType="Variable">
-            <Condition Enabled="false" Grouping="Or" />
-          </Action>
-          <Action OrderNumber="4" FolderOp="DisableFolder" FolderId="d5bebc32-55ee-4115-aba8-2fe89b0288a9" ActionType="Folder">
-            <Condition Enabled="false" Grouping="Or" />
-          </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="Or" />
-      </Trigger>
-      <Trigger Enabled="true" Name="Disable Gong" Id="30134a28-3030-4189-8482-1d339d357292" RegularExpression="!chakragongoff">
-        <Actions>
-          <Action OrderNumber="1" VariableOp="SetString" VariableName="gong" VariableExpression="off" ActionType="Variable">
-            <Condition Enabled="false" Grouping="Or" />
-          </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="Or" />
-      </Trigger>
-      <Trigger Enabled="true" Name="Enable Gong" Id="4efba308-ec3a-4b5b-a018-1bc5110c9b94" RegularExpression="!chakragongon">
-        <Actions>
-          <Action OrderNumber="1" VariableOp="SetString" VariableName="gong" VariableExpression="on" ActionType="Variable">
-            <Condition Enabled="false" Grouping="Or" />
-          </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="Or" />
-      </Trigger>
-    </Triggers>
+    <Triggers />
   </ExportedFolder>
 </TriggernometryExport>
