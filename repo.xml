@@ -15,7 +15,7 @@
                   <ConditionSingle Enabled="true" ExpressionL="${data0}" ExpressionTypeL="String" ExpressionR=".*514" ExpressionTypeR="String" ConditionType="RegexMatch" />
                 </Condition>
               </Action>
-              <Action OrderNumber="3" PlaySoundFileExpression="C:\Users\allie\Downloads\Taco Bell Bong - Sound Effect (HD).mp3" UseTTSTextExpression="Overcap" ActionType="PlaySound" Asynchronous="False">
+              <Action OrderNumber="3" PlaySoundFileExpression="https://github.com/hintxiv/hintxivtriggers/blob/master/overcap.mp3?raw=true" UseTTSTextExpression="Overcap" ActionType="PlaySound" Asynchronous="False">
                 <Condition Enabled="true" Grouping="And">
                   <ConditionGroup Enabled="true" Grouping="Or">
                     <ConditionSingle Enabled="true" ExpressionL="${var:weaponskill}" ExpressionTypeL="String" ExpressionR="crit" ExpressionTypeR="String" ConditionType="StringEqualCase" />
