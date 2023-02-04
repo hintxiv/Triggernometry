@@ -1,143 +1,148 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="59dfcdaf-56ec-47eb-b85f-a5a341c18309" Name="Chakra Overcap" Enabled="true">
-    <Folders />
-    <Triggers>
-      <Trigger Enabled="true" Name="Capture Gauge" Id="de41caea-ad85-4d6a-9710-3f8aedb734fe" RegularExpression="(?&lt;timestamp&gt;^.{14}) Gauge (?&lt;type&gt;1F):(?&lt;id&gt;[^:]*):(?&lt;data0&gt;[^:]*):(?&lt;data1&gt;[^:]*):(?&lt;data2&gt;[^:]*):(?&lt;data3&gt;[^:]*)(?:$|:)">
-        <Actions>
-          <Action OrderNumber="1" VariableOp="SetString" VariableName="prevchakradata" VariableExpression="${var:chakradata}" ActionType="Variable" Asynchronous="False">
+  <ExportedFolder Id="194e2320-a6c3-4214-aaf4-a13fb3c09e5f" Name="hintxivtriggers" Enabled="true">
+    <Folders>
+      <Folder Id="30c542cf-5bbb-41ae-82ee-75643991f79d" Name="Chakra Overcap" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="Capture Gauge" Id="69ff5752-e434-4f0a-aaca-32e4e5970333" RegularExpression="(?&lt;timestamp&gt;^.{14}) Gauge (?&lt;type&gt;1F):(?&lt;id&gt;[^:]*):(?&lt;data0&gt;[^:]*):(?&lt;data1&gt;[^:]*):(?&lt;data2&gt;[^:]*):(?&lt;data3&gt;[^:]*)(?:$|:)">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetString" VariableName="prevchakradata" VariableExpression="${var:chakradata}" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" VariableOp="SetString" VariableName="chakradata" VariableExpression="${data0}" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${data0}" ExpressionTypeL="String" ExpressionR=".*514" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="3" PlaySoundFileExpression="C:\Users\allie\Downloads\Taco Bell Bong - Sound Effect (HD).mp3" UseTTSTextExpression="Overcap" ActionType="PlaySound" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionGroup Enabled="true" Grouping="Or">
+                    <ConditionSingle Enabled="true" ExpressionL="${var:weaponskill}" ExpressionTypeL="String" ExpressionR="crit" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                    <ConditionGroup Enabled="true" Grouping="And">
+                      <ConditionSingle Enabled="true" ExpressionL="${var:pb}" ExpressionTypeL="String" ExpressionR="true" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
+                      <ConditionSingle Enabled="true" ExpressionL="${var:beastchakra}" ExpressionTypeL="String" ExpressionR="updated" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
+                    </ConditionGroup>
+                  </ConditionGroup>
+                  <ConditionSingle Enabled="true" ExpressionL="${var:chakradata}" ExpressionTypeL="String" ExpressionR=".*514" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                  <ConditionSingle Enabled="true" ExpressionL="${var:prevchakradata}" ExpressionTypeL="String" ExpressionR=".*514" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="4" VariableOp="SetString" VariableName="pb" VariableExpression="false" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="5" VariableOp="SetString" VariableName="beastchakra" VariableExpression="false" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
             <Condition Enabled="false" Grouping="Or" />
-          </Action>
-          <Action OrderNumber="2" VariableOp="SetString" VariableName="chakradata" VariableExpression="${data0}" ActionType="Variable" Asynchronous="False">
-            <Condition Enabled="false" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${data0}" ExpressionTypeL="String" ExpressionR=".*514" ExpressionTypeR="String" ConditionType="RegexMatch" />
-            </Condition>
-          </Action>
-          <Action OrderNumber="3" PlaySoundFileExpression="https://github.com/hintxiv/Triggernometry/blob/master/overcap.mp3" UseTTSTextExpression="Overcap" ActionType="PlaySound" Asynchronous="False">
-            <Condition Enabled="true" Grouping="And">
-              <ConditionGroup Enabled="true" Grouping="Or">
-                <ConditionSingle Enabled="true" ExpressionL="${var:weaponskill}" ExpressionTypeL="String" ExpressionR="crit" ExpressionTypeR="String" ConditionType="StringEqualCase" />
-                <ConditionGroup Enabled="true" Grouping="And">
-                  <ConditionSingle Enabled="true" ExpressionL="${var:pb}" ExpressionTypeL="String" ExpressionR="true" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
-                  <ConditionSingle Enabled="true" ExpressionL="${var:beastchakra}" ExpressionTypeL="String" ExpressionR="updated" ExpressionTypeR="String" ConditionType="StringNotEqualCase" />
-                </ConditionGroup>
-              </ConditionGroup>
-              <ConditionSingle Enabled="true" ExpressionL="${var:chakradata}" ExpressionTypeL="String" ExpressionR=".*514" ExpressionTypeR="String" ConditionType="RegexMatch" />
-              <ConditionSingle Enabled="true" ExpressionL="${var:prevchakradata}" ExpressionTypeL="String" ExpressionR=".*514" ExpressionTypeR="String" ConditionType="RegexMatch" />
-            </Condition>
-          </Action>
-          <Action OrderNumber="4" VariableOp="SetString" VariableName="pb" VariableExpression="false" ActionType="Variable">
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Name="Capture PB Fade" Id="611df82d-1dfd-43a9-9438-72cd3dd887db" RegularExpression="(?&lt;timestamp&gt;^.{14}) StatusRemove (?&lt;type&gt;1E):(?&lt;effectId&gt;[^:]*):Perfect Balance:[^:]*:(?&lt;sourceId&gt;[^:]*):(?&lt;source&gt;[^:]*):(?&lt;targetId&gt;[^:]*):(?&lt;target&gt;[^:]*):(?&lt;count&gt;[^:]*)(?:$|:)">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetString" VariableName="pb" VariableExpression="true" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
             <Condition Enabled="false" Grouping="Or" />
-          </Action>
-          <Action OrderNumber="5" VariableOp="SetString" VariableName="beastchakra" VariableExpression="false" ActionType="Variable">
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Name="Capture PB Apply" Id="4aeefddb-6573-42cc-ab76-4e78f7618806" RegularExpression="(?&lt;timestamp&gt;^.{14}) StatusAdd (?&lt;type&gt;1A):(?&lt;effectId&gt;[^:]*):Perfect Balance:(?&lt;duration&gt;[^:]*):(?&lt;sourceId&gt;[^:]*):(?&lt;source&gt;[^:]*):(?&lt;targetId&gt;[^:]*):(?&lt;target&gt;[^:]*):(?&lt;count&gt;[^:]*):(?&lt;targetMaxHp&gt;[^:]*):(?&lt;sourceMaxHp&gt;[^:]*)(?:$|:)">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetString" VariableName="pb" VariableExpression="true" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${count}" ExpressionTypeL="String" ExpressionR="03" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="2" VariableOp="SetString" VariableName="weaponskill" VariableExpression="none" ActionType="Variable">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${count}" ExpressionTypeL="String" ExpressionR="03" ExpressionTypeR="String" ConditionType="StringEqualCase" />
+                </Condition>
+              </Action>
+            </Actions>
             <Condition Enabled="false" Grouping="Or" />
-          </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
-      </Trigger>
-      <Trigger Enabled="true" Name="Capture PB Fade" Id="f4143e91-6c9e-4f14-9ef6-1730c56e314f" RegularExpression="(?&lt;timestamp&gt;^.{14}) StatusRemove (?&lt;type&gt;1E):(?&lt;effectId&gt;[^:]*):Perfect Balance:[^:]*:(?&lt;sourceId&gt;[^:]*):(?&lt;source&gt;[^:]*):(?&lt;targetId&gt;[^:]*):(?&lt;target&gt;[^:]*):(?&lt;count&gt;[^:]*)(?:$|:)">
-        <Actions>
-          <Action OrderNumber="1" VariableOp="SetString" VariableName="pb" VariableExpression="true" ActionType="Variable">
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Name="Weaponskill Crit" Id="467e3393-c1d6-4667-a2df-0bd386c8124b" RegularExpression="(?&lt;timestamp&gt;^.{14}) (?:ActionEffect|AOEActionEffect) (?&lt;type&gt;(?:15|16)):(?&lt;sourceId&gt;[^:]*):(?&lt;source&gt;[^:]*):(?&lt;id&gt;[^:]*):(?&lt;ability&gt;(?:[^:]|: )*?):(?&lt;targetId&gt;[^:]*):(?&lt;target&gt;[^:]*):(?&lt;flags&gt;[^:]*):(?&lt;damage&gt;[^:]*)(?::[^:]*){14}:(?&lt;targetCurrentHp&gt;[^:]*):(?&lt;targetMaxHp&gt;[^:]*):(?&lt;targetCurrentMp&gt;[^:]*):(?&lt;targetMaxMp&gt;[^:]*)(?::[^:]*){2}:(?&lt;targetX&gt;[^:]*):(?&lt;targetY&gt;[^:]*):(?&lt;targetZ&gt;[^:]*):(?&lt;targetHeading&gt;[^:]*):(?&lt;currentHp&gt;[^:]*):(?&lt;maxHp&gt;[^:]*):(?&lt;currentMp&gt;[^:]*):(?&lt;maxMp&gt;[^:]*)(?::[^:]*){2}:(?&lt;x&gt;[^:]*):(?&lt;y&gt;[^:]*):(?&lt;z&gt;[^:]*):(?&lt;heading&gt;[^:]*):(?&lt;sequence&gt;[^:]*):(?&lt;targetIndex&gt;[^:]*):(?&lt;targetCount&gt;[^:]*)(?:$|:)">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetString" VariableName="weaponskill" VariableExpression="none" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionGroup Enabled="true" Grouping="Or">
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="16476" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="56" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="54" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="61" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="62" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="66" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="70" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="74" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="16473" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3545" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25768" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25769" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25767" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3543" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="53" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25765" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25882" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  </ConditionGroup>
+                </Condition>
+              </Action>
+              <Action OrderNumber="2" VariableOp="SetString" VariableName="weaponskill" VariableExpression="crit" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionGroup Enabled="true" Grouping="Or">
+                    <ConditionSingle Enabled="true" ExpressionL="mod(floor(${flags} / 1000), 10)" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="mod(floor(${flags} / 1000), 10)" ExpressionTypeL="Numeric" ExpressionR="6" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  </ConditionGroup>
+                  <ConditionGroup Enabled="true" Grouping="Or">
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="16476" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="56" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="54" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="61" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="62" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="66" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="70" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="74" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="16473" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3545" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25768" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25769" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25767" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3543" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="53" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25765" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25882" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  </ConditionGroup>
+                </Condition>
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="And" />
+            <Conditions />
+          </Trigger>
+          <Trigger Enabled="true" Name="Capture Beast Chakra" Id="bdd07e55-cf3a-4dad-95ce-fd2eac5f838a" RegularExpression="(?&lt;timestamp&gt;^.{14}) (?:ActionEffect|AOEActionEffect) (?&lt;type&gt;(?:15|16)):(?&lt;sourceId&gt;[^:]*):(?&lt;source&gt;[^:]*):(?&lt;id&gt;[^:]*):(?&lt;ability&gt;(?:[^:]|: )*?):(?&lt;targetId&gt;[^:]*):(?&lt;target&gt;[^:]*):(?&lt;flags&gt;[^:]*):(?&lt;damage&gt;[^:]*)(?::[^:]*){14}:(?&lt;targetCurrentHp&gt;[^:]*):(?&lt;targetMaxHp&gt;[^:]*):(?&lt;targetCurrentMp&gt;[^:]*):(?&lt;targetMaxMp&gt;[^:]*)(?::[^:]*){2}:(?&lt;targetX&gt;[^:]*):(?&lt;targetY&gt;[^:]*):(?&lt;targetZ&gt;[^:]*):(?&lt;targetHeading&gt;[^:]*):(?&lt;currentHp&gt;[^:]*):(?&lt;maxHp&gt;[^:]*):(?&lt;currentMp&gt;[^:]*):(?&lt;maxMp&gt;[^:]*)(?::[^:]*){2}:(?&lt;x&gt;[^:]*):(?&lt;y&gt;[^:]*):(?&lt;z&gt;[^:]*):(?&lt;heading&gt;[^:]*):(?&lt;sequence&gt;[^:]*):(?&lt;targetIndex&gt;[^:]*):(?&lt;targetCount&gt;[^:]*)(?:$|:)">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetString" VariableName="beastchakra" VariableExpression="none" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" VariableOp="SetString" VariableName="beastchakra" VariableExpression="updated" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionGroup Enabled="true" Grouping="Or">
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3545" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25768" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25769" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3543" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25765" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                    <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25882" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  </ConditionGroup>
+                </Condition>
+              </Action>
+            </Actions>
             <Condition Enabled="false" Grouping="Or" />
-          </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
-      </Trigger>
-      <Trigger Enabled="true" Name="Capture PB Apply" Id="8e8f4a89-aaee-4391-a563-06623da144b6" RegularExpression="(?&lt;timestamp&gt;^.{14}) StatusAdd (?&lt;type&gt;1A):(?&lt;effectId&gt;[^:]*):Perfect Balance:(?&lt;duration&gt;[^:]*):(?&lt;sourceId&gt;[^:]*):(?&lt;source&gt;[^:]*):(?&lt;targetId&gt;[^:]*):(?&lt;target&gt;[^:]*):(?&lt;count&gt;[^:]*):(?&lt;targetMaxHp&gt;[^:]*):(?&lt;sourceMaxHp&gt;[^:]*)(?:$|:)">
-        <Actions>
-          <Action OrderNumber="1" VariableOp="SetString" VariableName="pb" VariableExpression="true" ActionType="Variable">
-            <Condition Enabled="false" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${count}" ExpressionTypeL="String" ExpressionR="03" ExpressionTypeR="String" ConditionType="StringEqualCase" />
-            </Condition>
-          </Action>
-          <Action OrderNumber="2" VariableOp="SetString" VariableName="weaponskill" VariableExpression="none" ActionType="Variable">
-            <Condition Enabled="true" Grouping="Or">
-              <ConditionSingle Enabled="true" ExpressionL="${count}" ExpressionTypeL="String" ExpressionR="03" ExpressionTypeR="String" ConditionType="StringEqualCase" />
-            </Condition>
-          </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
-      </Trigger>
-      <Trigger Enabled="true" Name="Weaponskill Crit" Id="cb3d950e-7dfc-4d50-bce8-95a8af6a1ade" RegularExpression="(?&lt;timestamp&gt;^.{14}) (?:ActionEffect|AOEActionEffect) (?&lt;type&gt;(?:15|16)):(?&lt;sourceId&gt;[^:]*):(?&lt;source&gt;[^:]*):(?&lt;id&gt;[^:]*):(?&lt;ability&gt;(?:[^:]|: )*?):(?&lt;targetId&gt;[^:]*):(?&lt;target&gt;[^:]*):(?&lt;flags&gt;[^:]*):(?&lt;damage&gt;[^:]*)(?::[^:]*){14}:(?&lt;targetCurrentHp&gt;[^:]*):(?&lt;targetMaxHp&gt;[^:]*):(?&lt;targetCurrentMp&gt;[^:]*):(?&lt;targetMaxMp&gt;[^:]*)(?::[^:]*){2}:(?&lt;targetX&gt;[^:]*):(?&lt;targetY&gt;[^:]*):(?&lt;targetZ&gt;[^:]*):(?&lt;targetHeading&gt;[^:]*):(?&lt;currentHp&gt;[^:]*):(?&lt;maxHp&gt;[^:]*):(?&lt;currentMp&gt;[^:]*):(?&lt;maxMp&gt;[^:]*)(?::[^:]*){2}:(?&lt;x&gt;[^:]*):(?&lt;y&gt;[^:]*):(?&lt;z&gt;[^:]*):(?&lt;heading&gt;[^:]*):(?&lt;sequence&gt;[^:]*):(?&lt;targetIndex&gt;[^:]*):(?&lt;targetCount&gt;[^:]*)(?:$|:)">
-        <Actions>
-          <Action OrderNumber="1" VariableOp="SetString" VariableName="weaponskill" VariableExpression="none" ActionType="Variable" Asynchronous="False">
-            <Condition Enabled="true" Grouping="And">
-              <ConditionGroup Enabled="true" Grouping="Or">
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="16476" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="56" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="54" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="61" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="62" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="66" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="70" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="74" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="16473" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3545" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25768" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25769" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25767" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3543" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="53" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25765" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25882" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-              </ConditionGroup>
-            </Condition>
-          </Action>
-          <Action OrderNumber="2" VariableOp="SetString" VariableName="weaponskill" VariableExpression="crit" ActionType="Variable" Asynchronous="False">
-            <Condition Enabled="true" Grouping="And">
-              <ConditionGroup Enabled="true" Grouping="Or">
-                <ConditionSingle Enabled="true" ExpressionL="mod(floor(${flags} / 1000), 10)" ExpressionTypeL="Numeric" ExpressionR="2" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="mod(floor(${flags} / 1000), 10)" ExpressionTypeL="Numeric" ExpressionR="6" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-              </ConditionGroup>
-              <ConditionGroup Enabled="true" Grouping="Or">
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="16476" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="56" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="54" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="61" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="62" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="66" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="70" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="74" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="16473" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3545" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25768" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25769" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25767" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3543" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="53" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25765" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25882" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-              </ConditionGroup>
-            </Condition>
-          </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="And" />
-        <Conditions />
-      </Trigger>
-      <Trigger Enabled="true" Name="Capture Beast Chakra" Id="a8df8839-d64a-44cb-8bba-67ba820e5f8e" RegularExpression="(?&lt;timestamp&gt;^.{14}) (?:ActionEffect|AOEActionEffect) (?&lt;type&gt;(?:15|16)):(?&lt;sourceId&gt;[^:]*):(?&lt;source&gt;[^:]*):(?&lt;id&gt;[^:]*):(?&lt;ability&gt;(?:[^:]|: )*?):(?&lt;targetId&gt;[^:]*):(?&lt;target&gt;[^:]*):(?&lt;flags&gt;[^:]*):(?&lt;damage&gt;[^:]*)(?::[^:]*){14}:(?&lt;targetCurrentHp&gt;[^:]*):(?&lt;targetMaxHp&gt;[^:]*):(?&lt;targetCurrentMp&gt;[^:]*):(?&lt;targetMaxMp&gt;[^:]*)(?::[^:]*){2}:(?&lt;targetX&gt;[^:]*):(?&lt;targetY&gt;[^:]*):(?&lt;targetZ&gt;[^:]*):(?&lt;targetHeading&gt;[^:]*):(?&lt;currentHp&gt;[^:]*):(?&lt;maxHp&gt;[^:]*):(?&lt;currentMp&gt;[^:]*):(?&lt;maxMp&gt;[^:]*)(?::[^:]*){2}:(?&lt;x&gt;[^:]*):(?&lt;y&gt;[^:]*):(?&lt;z&gt;[^:]*):(?&lt;heading&gt;[^:]*):(?&lt;sequence&gt;[^:]*):(?&lt;targetIndex&gt;[^:]*):(?&lt;targetCount&gt;[^:]*)(?:$|:)">
-        <Actions>
-          <Action OrderNumber="1" VariableOp="SetString" VariableName="beastchakra" VariableExpression="none" ActionType="Variable" Asynchronous="False">
-            <Condition Enabled="false" Grouping="Or" />
-          </Action>
-          <Action OrderNumber="2" VariableOp="SetString" VariableName="beastchakra" VariableExpression="updated" ActionType="Variable" Asynchronous="False">
-            <Condition Enabled="true" Grouping="And">
-              <ConditionGroup Enabled="true" Grouping="Or">
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3545" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25768" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25769" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="3543" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25765" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-                <ConditionSingle Enabled="true" ExpressionL="hex2dec(${id})" ExpressionTypeL="Numeric" ExpressionR="25882" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
-              </ConditionGroup>
-            </Condition>
-          </Action>
-        </Actions>
-        <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
-      </Trigger>
-    </Triggers>
+            <Conditions />
+          </Trigger>
+        </Triggers>
+      </Folder>
+    </Folders>
+    <Triggers />
   </ExportedFolder>
 </TriggernometryExport>
