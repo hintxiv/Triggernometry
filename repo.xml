@@ -54,7 +54,7 @@
                   </ConditionGroup>
                   <ConditionSingle Enabled="true" ExpressionL="${var:chakradata}" ExpressionTypeL="String" ExpressionR=".*514" ExpressionTypeR="String" ConditionType="RegexMatch" />
                   <ConditionSingle Enabled="true" ExpressionL="${var:prevchakradata}" ExpressionTypeL="String" ExpressionR=".*514" ExpressionTypeR="String" ConditionType="RegexMatch" />
-                  <ConditionSingle Enabled="true" ExpressionL="${var:gong}" ExpressionTypeL="String" ExpressionR="on" ExpressionTypeR="String" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${var:gong}" ExpressionTypeL="String" ExpressionR="on" ExpressionTypeR="String" ConditionType="StringEqualCase" />
                 </Condition>
               </Action>
               <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="chakraOvercap" VariableExpression="${var:chakraOvercap}+1" ActionType="Variable">
@@ -292,7 +292,6 @@
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
       </Trigger>
       <Trigger Enabled="true" Name="Enable Gong" Id="4efba308-ec3a-4b5b-a018-1bc5110c9b94" RegularExpression="!chakragong">
         <Actions>
@@ -301,7 +300,6 @@
           </Action>
         </Actions>
         <Condition Enabled="false" Grouping="Or" />
-        <Conditions />
       </Trigger>
     </Triggers>
   </ExportedFolder>
